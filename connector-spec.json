@@ -1,0 +1,108 @@
+{
+    "name": "Outlook Out Of Office",
+    "commands": ["std:account:list", "std:account:read", "std:test-connection"],
+    "sourceConfig": [
+        {
+            "type": "menu",
+            "label": "Configuration",
+            "items": [
+                {
+                    "type": "section",
+                    "sectionTitle": "Authentication",
+                    "sectionHelpMessage": "Provide connection parameters to interact securely with the target application.",
+                    "items": [
+                        {
+                            "key": "tenantId",
+                            "label": "Tenant Id",
+                            "type": "text"
+                        },
+                        {
+                            "key": "clientId",
+                            "label": "Client Id",
+                            "type": "text"
+                        },
+                        {
+                            "key": "clientSecret",
+                            "label": "Client Secret",
+                            "type": "secret"
+                        }
+                    ]
+                },
+                {
+                    "type": "section",
+                    "sectionTitle": "Advanced",
+                    "sectionHelpMessage": "Configure advanced settings",
+                    "items": [
+                        {
+                            "key": "filter",
+                            "label": "Filter",
+                            "type": "text"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "accountSchema": {
+        "displayAttribute": "userPrincipalName",
+        "identityAttribute": "id",
+        "attributes": [
+            {
+                "name": "id",
+                "type": "string",
+                "description": "Id of the account"
+            },
+            {
+                "name": "firstName",
+                "type": "string",
+                "description": "First name of the account"
+            },
+            {
+                "name": "lastName",
+                "type": "string",
+                "description": "Last name of the account"
+            },
+            {
+                "name": "mail",
+                "type": "string",
+                "description": "Email of the account"
+            },
+            {
+                "name": "userPrincipalName",
+                "type": "string",
+                "description": "UserPrincipalName of the account"
+            },
+            {
+                "name": "displayName",
+                "type": "string",
+                "description": "Display name of the account"
+            },
+            {
+                "name": "lastPasswordChangeDateTime",
+                "type": "string",
+                "description": "Last Password Change Date of the account"
+            },
+            {
+                "name": "scheduledEndDateTime",
+                "type": "string",
+                "description": "Out of Office Scheduled End Date of the account"
+            },
+            {
+                "name": "scheduledStartDateTime",
+                "type": "string",
+                "description": "Out of Office Scheduled Start Date of the account"
+            },
+            {
+                "name": "automaticRepliesSetting",
+                "type": "string",
+                "description": "Automatic Replies Setting of the account"
+            },
+            {
+                "name": "automaticRepliesStatus",
+                "type": "string",
+                "description": "Automatic Replies Status of the account"
+            }
+        ]
+    },
+    "entitlementSchemas": []
+}
