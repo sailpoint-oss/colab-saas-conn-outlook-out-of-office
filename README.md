@@ -12,7 +12,7 @@
 [contributor-shield]:https://img.shields.io/github/contributors/sailpoint-oss/colab-saas-conn-outlook-out-of-office?label=Contributors
 [contributors-url]:https://github.com/sailpoint-oss/colab-saas-conn-outlook-out-of-office/graphs/contributors
 
-# Outlook Out of Office Connector
+# Outlook Out of Office SaaS Connector
 [Explore the docs »](https://developer.sailpoint.com/discuss/t/outlook-out-of-office-connector/20957)
 
 [New to the CoLab? Click here »](https://developer.sailpoint.com/discuss/t/about-the-sailpoint-developer-community-colab/11230)
