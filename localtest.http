@@ -1,0 +1,49 @@
+@baseUrl = http://localhost:3000
+
+# @name test
+POST {{baseUrl}}
+Content-Type: application/json
+
+{
+  "type": "std:test-connection",
+  "input": {},
+  "config": {
+    "clientId": "{{$dotenv CLIENT_ID}}",
+    "clientSecret": "{{$dotenv CLIENT_SECRET}}",
+    "tenantId": "{{$dotenv TENANT_ID}}"
+  }
+}
+
+### 
+
+# @name account:read
+POST {{baseUrl}}
+Content-Type: application/json
+
+{
+  "type": "std:account:read",
+  "input": {
+    "identity": "{{$dotenv TEST_IDENTITY}}"
+  },
+  "config": {
+    "clientId": "{{$dotenv CLIENT_ID}}",
+    "clientSecret": "{{$dotenv CLIENT_SECRET}}",
+    "tenantId": "{{$dotenv TENANT_ID}}"
+  }
+}
+
+### 
+
+# @name account:list
+POST {{baseUrl}}
+Content-Type: application/json
+
+{
+  "type": "std:account:list",
+  "input": {  },
+  "config": {
+    "clientId": "{{$dotenv CLIENT_ID}}",
+    "clientSecret": "{{$dotenv CLIENT_SECRET}}",
+    "tenantId": "{{$dotenv TENANT_ID}}"
+  }
+}

@@ -37,6 +37,11 @@
                             "key": "filter",
                             "label": "Filter",
                             "type": "text"
+                        },
+                        {
+                            "key": "pageSize",
+                            "label": "Page Size",
+                            "type": "number"
                         }
                     ]
                 }

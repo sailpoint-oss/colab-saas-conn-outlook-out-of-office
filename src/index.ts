@@ -9,6 +9,7 @@ import {
     StdAccountReadInput,
     StdAccountReadOutput,
     StdTestConnectionOutput,
+    StdTestConnectionInput,
 } from '@sailpoint/connector-sdk'
 import { MyClient } from './my-client'
 
@@ -21,15 +22,18 @@ export const connector = async () => {
     const myClient = new MyClient(config)
 
     return createConnector()
-        .stdTestConnection(async (context: Context, input: undefined, res: Response<StdTestConnectionOutput>) => {
-            logger.info('Running test connection')
-            await myClient.testConnection()
-            res.send({})
-        })
+        .stdTestConnection(
+            async (context: Context, input: StdTestConnectionInput, res: Response<StdTestConnectionOutput>) => {
+                logger.info('Running test connection')
+                await myClient.testConnection()
+                res.send({})
+            }
+        )
         .stdAccountList(async (context: Context, input: StdAccountListInput, res: Response<StdAccountListOutput>) => {
             const accounts = await myClient.getAllAccounts()
+            let count = 0
 
-            for (const account of accounts) {
+            for await (const account of accounts) {
                 //console.log('This is my account ' + account.get('id'))
                 res.send({
                     identity: <string>account.get('id'),
@@ -48,8 +52,9 @@ export const connector = async () => {
                         automaticRepliesStatus: <string>account.get('automaticRepliesStatus'),
                     },
                 })
+                count++
             }
-            logger.info(`stdAccountList sent ${accounts.length} accounts`)
+            logger.info(`stdAccountList sent ${count} accounts`)
         })
         .stdAccountRead(async (context: Context, input: StdAccountReadInput, res: Response<StdAccountReadOutput>) => {
             const account = await myClient.getAccount(input.identity)
